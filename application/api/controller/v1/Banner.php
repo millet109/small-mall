@@ -23,6 +23,7 @@ class Banner
         $validate->goCheck();
         $banner = BannerModel::getBannerById($id);
         //todo
+        return $banner;
 
     }
 }

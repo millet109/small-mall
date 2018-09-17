@@ -34,7 +34,7 @@ class BaseValidate extends Validate
      * @param string $field
      * @return bool|string
      */
-    projected function isPositiveInteger($value,$rule = '',$data = '',$field = '')
+    protected function isPositiveInteger($value,$rule = '',$data = '',$field = '')
     {
         if (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0) {
             return true;
