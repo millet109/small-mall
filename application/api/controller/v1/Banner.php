@@ -24,11 +24,10 @@ class Banner
         $validate = new IDMustBePositiveInt();
         $validate->goCheck();
         $banner = BannerModel::getBannerById($id);
-        //todo
         if(!$banner){
             throw new BannerMissException();
         }
-        return $banner;
+        return json($banner);
 
     }
 }
