@@ -9,8 +9,9 @@ namespace app\api\model;
 
 use think\Db;
 use think\Exception;
+use think\Model;
 
-class Banner
+class Banner extends Model
 {
     /**
      * 通过banner_id获取banner内容
