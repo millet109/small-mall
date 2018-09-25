@@ -17,10 +17,13 @@ class BaseValidate extends Validate
     {
         $request = Request::instance();
         $params = $request->param();
-        if(!$this->check($params)){
+        $result = $this->batch()->check($params);
+        //if(!$this->check($params)){
+        if(!$result){
             $exception = new ParameterException([
-                'msg' => is_array($this->error) ? implode(
-                    ';', $this->error) : $this->error,
+                //'msg' => is_array($this->error) ? implode(
+                    //';', $this->error) : $this->error,
+                'msg' => $this->error,
             ]);
             throw $exception;
         }

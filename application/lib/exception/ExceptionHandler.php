@@ -24,7 +24,7 @@ class ExceptionHandler extends Handle
      * @param Exception $e
      * @return \think\Response|\think\response\Json
      */
-    public function render(Exception $e)
+    public function render(\Exception $e)
     {
         if($e instanceof BaseException){
             //如果是自定义异常
@@ -57,7 +57,7 @@ class ExceptionHandler extends Handle
      * 将异常写入日志
      * @param Exception $e
      */
-    private function recordErrorLog(Exception $e)
+    private function recordErrorLog(\Exception $e)
     {
         Log::init([
             'type'  =>  'File',
