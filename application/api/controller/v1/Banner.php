@@ -15,16 +15,15 @@ class Banner
 {
     /**
      * 获取指定ID的banner信息
-     * @param $url /banner/:id
-     * @param $id banner的ID号
-     * @param $http get
+     * @param $id
+     * @return \think\response\Json
+     * @throws BannerMissException
      */
     public function getBanner($id)
     {
         $validate = new IDMustBePositiveInt();
         $validate->goCheck();
-        //$banner = BannerModel::getBannerById($id);
-        $banner = BannerModel::get($id);
+        $banner = BannerModel::with(['items','items.img'])->find($id);
         if(!$banner){
             throw new BannerMissException();
         }

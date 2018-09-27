@@ -14,6 +14,15 @@ use think\Model;
 class Banner extends Model
 {
     /**
+     * 关联查询banner_item表中具体banner信息
+     * @return \think\model\relation\HasMany
+     */
+    public function items()
+    {
+        return $this->hasMany('BannerItem','banner_id','id');
+    }
+
+    /**
      * 通过banner_id获取banner内容
      * @param $id
      * @return false|\PDOStatement|string|\think\Collection
