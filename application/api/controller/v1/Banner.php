@@ -23,7 +23,7 @@ class Banner
     {
         $validate = new IDMustBePositiveInt();
         $validate->goCheck();
-        $banner = BannerModel::with(['items','items.img'])->find($id);
+        $banner = BannerModel::getBannerByID($id);
         if(!$banner){
             throw new BannerMissException();
         }

@@ -12,6 +12,13 @@ use think\Model;
 class BannerItem extends Model
 {
     /**
+     * 模型内部隐藏/展示某些字段
+     * @var array
+     */
+    protected $hidden = ['id','update_time','delete_time','img_id','banner_id'];
+    protected $visible = [];
+
+    /**
      * 获取image表中banner图片url信息
      * @return \think\model\relation\BelongsTo
      */
