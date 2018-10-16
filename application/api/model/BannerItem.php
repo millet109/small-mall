@@ -7,9 +7,8 @@
  */
 
 namespace app\api\model;
-use think\Model;
 
-class BannerItem extends Model
+class BannerItem extends BaseModel
 {
     /**
      * 模型内部隐藏/展示某些字段

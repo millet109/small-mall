@@ -7,11 +7,7 @@
  */
 namespace app\api\model;
 
-use think\Db;
-use think\Exception;
-use think\Model;
-
-class Banner extends Model
+class Banner extends BaseModel
 {
     /**
      * 模型内部隐藏/展示某些字段
