@@ -20,11 +20,16 @@ class Image extends Model
 
     /**
      * 读取器拼接图片url完整路径
-     * @param $value
+     * @param $value 目标字段值 url
+     * @param $data 查询数组 包含url，from
      * @return string
      */
-    public function getUrlAttr($value)
+    public function getUrlAttr($value,$data)
     {
-        return config('setting.img_prefix').$value;
+        $finalUrl = $value;
+        if($data['from'] == 1){
+            $finalUrl = config('setting.img_prefix').$value;
+        }
+        return $finalUrl;
     }
 }
