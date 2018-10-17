@@ -31,4 +31,9 @@ class Theme
         }
         return $result;
     }
+
+    public function getComplexOne($id)
+    {
+
+    }
 }
