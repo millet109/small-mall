@@ -15,6 +15,7 @@ class Banner
 {
     /**
      * 获取指定ID的banner信息
+     * @url /banner/id
      * @param $id
      * @return \think\response\Json
      * @throws BannerMissException

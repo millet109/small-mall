@@ -12,6 +12,13 @@ namespace app\api\model;
 class Theme extends BaseModel
 {
     /**
+     * 模型内部隐藏/展示某些字段
+     * @var array
+     */
+    protected $hidden = ['update_time','delete_time','topic_img_id','head_img_id'];
+    protected $visible = [];
+
+    /**
      *获取专题top图片
      * @return \think\model\relation\BelongsTo
      */
@@ -21,7 +28,7 @@ class Theme extends BaseModel
     }
 
     /**
-     * 虎丘专题点击进去的head图片
+     * 获取专题点击进去的head图片
      * @return \think\model\relation\BelongsTo
      */
     public function headImg()
