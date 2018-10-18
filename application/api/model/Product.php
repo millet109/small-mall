@@ -8,7 +8,6 @@
 
 namespace app\api\model;
 
-
 class Product extends BaseModel
 {
     /**
@@ -22,7 +21,7 @@ class Product extends BaseModel
         'main_img_id',
         'pivot',
         'from',
-        'category_id'
+        'category_id',
     ];
 
     /**
@@ -34,5 +33,18 @@ class Product extends BaseModel
     public function getMainImgUrlAttr($value,$data)
     {
         return $this->prefixImgUrl($value,$data);
+    }
+
+    /**
+     * 获取最新商品
+     * @param $count
+     * @return false|\PDOStatement|string|\think\Collection
+     */
+    public static function getMostRecent($count)
+    {
+        $products = self::limit($count)
+            ->order('create_time desc')
+            ->select();
+        return $products;
     }
 }
