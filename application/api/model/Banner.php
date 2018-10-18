@@ -13,7 +13,10 @@ class Banner extends BaseModel
      * 模型内部隐藏/展示某些字段
      * @var array
      */
-    protected $hidden = ['update_time','delete_time'];
+    protected $hidden = [
+        'update_time',
+        'delete_time'
+    ];
     protected $visible = [];
 
     /**

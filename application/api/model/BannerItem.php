@@ -14,7 +14,13 @@ class BannerItem extends BaseModel
      * 模型内部隐藏/展示某些字段
      * @var array
      */
-    protected $hidden = ['id','update_time','delete_time','img_id','banner_id'];
+    protected $hidden = [
+        'id',
+        'update_time',
+        'delete_time',
+        'img_id',
+        'banner_id'
+    ];
     protected $visible = [];
 
     /**

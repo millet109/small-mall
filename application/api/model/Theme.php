@@ -15,7 +15,12 @@ class Theme extends BaseModel
      * 模型内部隐藏/展示某些字段
      * @var array
      */
-    protected $hidden = ['update_time','delete_time','topic_img_id','head_img_id'];
+    protected $hidden = [
+        'update_time',
+        'delete_time',
+        'topic_img_id',
+        'head_img_id'
+    ];
     protected $visible = [];
 
     /**
@@ -36,8 +41,22 @@ class Theme extends BaseModel
         return $this->belongsTo('Image','head_img_id','id');
     }
 
+    /**
+     * 通过关联表关联获取products信息
+     * @return \think\model\relation\BelongsToMany
+     */
     public function products()
     {
         return $this->belongsToMany('Product','theme_product','product_id','theme_id');
+    }
+
+    /**
+     * 获取theme和produsts信息
+     * @param $id
+     * @return array|false|\PDOStatement|string|\think\Model
+     */
+    public static function getThemeWithProducts($id)
+    {
+        return $theme = self::with('products,topicImg,headImg')->find($id);
     }
 }
