@@ -8,4 +8,5 @@
  */
 return [
     'img_prefix' => 'http://guwenjie.freephp.top/images',
+    'token_expire_in' => 7200
 ];
