@@ -46,4 +46,21 @@ class BaseValidate extends Validate
             return false;
         }
     }
+
+    /**
+     * 雅正获取token的code是否为空
+     * @param $value
+     * @param string $rule
+     * @param string $data
+     * @param string $field
+     * @return bool
+     */
+    protected function isNotEmpty($value,$rule = '',$data = '',$field = '')
+    {
+        if(empty($value)){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
