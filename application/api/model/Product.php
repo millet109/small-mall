@@ -35,6 +35,16 @@ class Product extends BaseModel
         return $this->prefixImgUrl($value,$data);
     }
 
+    public function imgs()
+    {
+        return $this->hasMany('ProductImage','product_id','id');
+    }
+
+    public function properties()
+    {
+        return $this->hasMany('ProductProperty','product_id','id');
+    }
+
     /**
      * 获取最新商品
      * @param $count
@@ -48,10 +58,22 @@ class Product extends BaseModel
         return $products;
     }
 
+    /**
+     * 通过分类ID获取该分类下的商品
+     * @param $categoryID
+     * @return false|\PDOStatement|string|\think\Collection
+     */
     public static function getProductsByCategoryID($categoryID)
     {
         $products = self::where('category_id','=',$categoryID)
             ->select();
         return $products;
+    }
+
+    public static function getProductDetail($id)
+    {
+        $product = self::with('imgs,properties')
+            ->find($id);
+        return $product;
     }
 }

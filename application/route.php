@@ -23,6 +23,8 @@ Route::get('api/:version/product/recent','api/:version.Product/getRecent');
 
 Route::get('api/:version/product/by_category','api/:version.product/getAllInCategory');
 
+Route::get('api/:version/product/:id','api/:version.product/getOne');
+
 Route::get('api/:version/category/all','api/:version.Category/getAllCategory');
 
 Route::post('api/:version/token/user','api/:version.Token/getTOken');
