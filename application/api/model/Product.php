@@ -35,11 +35,18 @@ class Product extends BaseModel
         return $this->prefixImgUrl($value,$data);
     }
 
+    /**
+     * 获取商品详情相关图片
+     * @return \think\model\relation\HasMany
+     */
     public function imgs()
     {
         return $this->hasMany('ProductImage','product_id','id');
     }
 
+    /**
+     * @return \think\model\relation\HasMany
+     */
     public function properties()
     {
         return $this->hasMany('ProductProperty','product_id','id');
@@ -70,9 +77,20 @@ class Product extends BaseModel
         return $products;
     }
 
+    /**
+     * 获取商品详情
+     * @param $id
+     * @return array|false|\PDOStatement|string|\think\Model
+     */
     public static function getProductDetail($id)
     {
-        $product = self::with('imgs,properties')
+        $product = self::with([
+            'imgs'=> function($query){
+                $query->with(['imgUrl'])
+                    ->order('order','asc');
+            }
+        ])
+            ->with(['properties'])
             ->find($id);
         return $product;
     }
