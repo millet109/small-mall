@@ -39,7 +39,7 @@ class UserToken extends Token
      * @return mixed
      * @throws Exception
      */
-    public function get($code)
+    public function get()
     {
         $result = curl_get($this->wxLoginUrl);
         $wxResult = json_decode($result,true);
@@ -50,10 +50,9 @@ class UserToken extends Token
             if($loginFail){
                 $this->processLoginError($wxResult);
             }else{
-                $this->grantToken($wxResult);
+                return $this->grantToken($wxResult);
             }
         }
-        return $wxResult;
     }
 
     /**

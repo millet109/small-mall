@@ -24,7 +24,7 @@ class Token
     {
         (new TokenGet())->goCheck();
         $wx = new UserToken($code);
-        $token = $wx->get($code);
+        $token = $wx->get();
         return [
             'token' => $token
         ];
