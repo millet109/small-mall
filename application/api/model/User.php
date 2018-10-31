@@ -15,7 +15,7 @@ class User extends BaseModel
      * 查询用户地址信息
      * @return \think\model\relation\HasOne
      */
-    public static function address()
+    public function address()
     {
         return $this->hasOne('UserAddress', 'user_id', 'id');
     }
